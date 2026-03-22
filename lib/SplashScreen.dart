@@ -11,11 +11,13 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
+  bool _visible = true;
+
   @override
   void initState() {
     super.initState();
 
-    Timer(const Duration(seconds: 8), () {
+    Timer(const Duration(seconds: 15), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const LoginScreen()),
@@ -27,13 +29,14 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF4F5F7),
-      body:
-          Center(
-            child: Image.asset(
-              'images/splash_logo.png',
-              width: double.infinity,
-            ),
-          ),
+      body: Center(
+    child: AnimatedOpacity(
+    opacity: _visible ? 1.0 : 0.0,
+      duration: Duration(seconds: 3),
+      child:
+      Image.asset('images/splash_logo.png'),
+    ),
+    ),
       );
   }
 }

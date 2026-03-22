@@ -15,9 +15,12 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFF2F3F5),
         body:SingleChildScrollView(
           child: Column(
+
             children: [
+              SizedBox(height: 50,),
                 Container(
                   width:double.infinity,
                   decoration: BoxDecoration(
@@ -26,16 +29,19 @@ class _LoginScreenState extends State<LoginScreen> {
                       end: Alignment.bottomCenter,
                       colors: [
                         Color(0xFF8EBBFF),
-                        Colors.transparent,
-
-
-               ]
-               ),
+                        Color(0xFFF4F5F7),
+                      ],
+              ),
              ),
-            )
-          ],
-          )
-        )
-    );
+            ),
+              SizedBox(height: 50,),
+              Image.asset('images/FS_naming.png',width: 240,),
+        ],
+          ),
+            ),
+          );
+          
+
+
   }
 }
