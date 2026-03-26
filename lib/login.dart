@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:smp/forgotPassword.dart';
 import 'package:smp/signin.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -113,7 +115,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(width: 70,),
 
                 TextButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Forgotpassword()),
+                    );
+                  },
                   child: Text("Forgot Password?",
                   style: TextStyle(
                     color: Color(0xFF1D61E7),
