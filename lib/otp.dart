@@ -10,6 +10,7 @@ class Otp extends StatefulWidget{
 }
 
 class _OtpState extends State<Otp> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,6 +58,7 @@ class _OtpState extends State<Otp> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
+
                         width: 50,
                         height: 50,
                         decoration: BoxDecoration(
@@ -67,20 +69,15 @@ class _OtpState extends State<Otp> {
                             width: 1,
                           )
                         ),
-                      ),
 
-                      SizedBox(width: 22,),
-
-                      Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                            color: Color(0xFFF2F3F5),
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 1,
-                            )
+                        child: TextField(
+                          keyboardType: TextInputType.number,
+                          textAlign: TextAlign.center,
+                          maxLength: 1,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            counterText: "",
+                          ),
                         ),
                       ),
 
@@ -97,20 +94,15 @@ class _OtpState extends State<Otp> {
                               width: 1,
                             )
                         ),
-                      ),
 
-                      SizedBox(width: 22,),
-
-                      Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                            color: Color(0xFFF2F3F5),
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 1,
-                            )
+                        child: TextField(
+                          keyboardType: TextInputType.number,
+                          textAlign: TextAlign.center,
+                          maxLength: 1,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            counterText: "",
+                          ),
                         ),
                       ),
 
@@ -126,6 +118,66 @@ class _OtpState extends State<Otp> {
                               color: Colors.black,
                               width: 1,
                             )
+                        ),
+
+                        child: TextField(
+                          keyboardType: TextInputType.number,
+                          textAlign: TextAlign.center,
+                          maxLength: 1,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            counterText: "",
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(width: 22,),
+
+                      Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            color: Color(0xFFF2F3F5),
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 1,
+                            )
+                        ),
+
+                        child: TextField(
+                          keyboardType: TextInputType.number,
+                          textAlign: TextAlign.center,
+                          maxLength: 1,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            counterText: "",
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(width: 22,),
+
+                      Container(
+                        width: 50,
+                        height: 50,
+                        decoration: BoxDecoration(
+                            color: Color(0xFFF2F3F5),
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 1,
+                            )
+                        ),
+
+                        child: TextField(
+                          keyboardType: TextInputType.number,
+                          textAlign: TextAlign.center,
+                          maxLength: 1,
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            counterText: "",
+                          ),
                         ),
                       ),
                     ],

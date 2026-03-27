@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smp/Home.dart';
 import 'package:smp/forgotPassword.dart';
 import 'package:smp/signin.dart';
 
@@ -143,7 +144,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Home())
+                      );
+                    },
                     child: Text("Log in",
                     style: TextStyle(
                       color: Colors.white,
