@@ -91,7 +91,8 @@ class _HomeState extends State<Home> {
             ),
 
             SizedBox(height: 10,),
-
+            
+            
             Container(
 
               height: 50,
@@ -128,11 +129,78 @@ class _HomeState extends State<Home> {
 
                     ),
                 ),
+              ),
+            ),
 
 
+            Container(
+              padding: EdgeInsets.all(20),
+              child: Row(
 
+                children: [
+                  const Text("Upcoming Events",
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                  ),
+                 ),
+              
+                  Spacer(),
+              
+                  const Text("View All",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Color(0xFF1D61E7),
+                  ),
+                 ),
+
+                  SizedBox(
+                    height: 250,
+                    child: ListView.builder(
+                        itemCount: 10,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            width: 180,
+                            margin: EdgeInsets.only(left: 16),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+                                    image: DecorationImage(
+                                      image: AssetImage("images/image1.png"),
+                                      fit: BoxFit.cover,
+                                    ),
+
+
+                                  ),
+                                ),
+                              ],
+                            ),
+
+                          );
+
+                        }
+
+                    ),
+                  )
+
+
+              
+              
+                ],
               ),
             )
+          
+
+
           ],
         ),
       )

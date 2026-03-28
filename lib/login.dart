@@ -113,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Text("Remember me"),
 
-                    SizedBox(width: 70,),
+                    Spacer(),
 
                 TextButton(
                   onPressed: (){

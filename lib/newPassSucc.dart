@@ -9,7 +9,7 @@ class Newpasssucc extends StatefulWidget {
 
 class _NewpasssuccState extends State<Newpasssucc> {
 
-  bool _visible = true;
+  final _visible = true;
 
   @override
   Widget build(BuildContext context) {
