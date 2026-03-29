@@ -155,46 +155,41 @@ class _HomeState extends State<Home> {
                     color: Color(0xFF1D61E7),
                   ),
                  ),
+                ]
+              ),
+            ),
 
-                  SizedBox(
-                    height: 250,
-                    child: ListView.builder(
-                        itemCount: 10,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            width: 180,
-                            margin: EdgeInsets.only(left: 16),
+
+            SizedBox(
+              height: 250,
+              child: ListView.builder(
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      width: 180,
+                      margin: EdgeInsets.only(left: 16),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 100,
                             decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+                              image: DecorationImage(
+                                image: AssetImage("images/image1.png"),
+                                fit: BoxFit.cover,
+                              ),
                             ),
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-                                    image: DecorationImage(
-                                      image: AssetImage("images/image1.png"),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        }
-                    ),
-                  )
-
-
-              
-              
-                ],
+                          ),
+                        ],
+                      ),
+                    );
+                  }
               ),
             )
-          
-
 
           ],
         ),
