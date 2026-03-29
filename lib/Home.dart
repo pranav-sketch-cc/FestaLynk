@@ -178,17 +178,12 @@ class _HomeState extends State<Home> {
                                       image: AssetImage("images/image1.png"),
                                       fit: BoxFit.cover,
                                     ),
-
-
                                   ),
                                 ),
                               ],
                             ),
-
                           );
-
                         }
-
                     ),
                   )
 
