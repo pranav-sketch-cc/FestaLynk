@@ -156,48 +156,69 @@ class _HomeState extends State<Home> {
                   ),
                  ),
 
-                  SizedBox(
-                    height: 250,
-                    child: ListView.builder(
-                        itemCount: 10,
-                        itemBuilder: (context, index) {
-                          return Container(
-                            width: 180,
-                            margin: EdgeInsets.only(left: 16),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: Column(
-                              children: [
-                                Container(
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-                                    image: DecorationImage(
-                                      image: AssetImage("images/image1.png"),
-                                      fit: BoxFit.cover,
-                                    ),
 
-
-                                  ),
-                                ),
-                              ],
-                            ),
-
-                          );
-
-                        }
-
-                    ),
-                  )
-
-
-              
-              
                 ],
               ),
-            )
+            ),
+
+            SizedBox(
+              height: 250,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return Container(
+                    width: 180,
+                    margin: EdgeInsets.only(left: 16),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Column(
+                      children: [
+                        // image
+                        Container(
+                          height: 100,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+                            image: DecorationImage(
+                              image: AssetImage("images/image1.png"),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+
+                        SizedBox(height: 8),
+
+                        Text("Event Title"),
+
+                        SizedBox(height: 4),
+
+                        Text("Chennai"),
+
+                        Spacer(),
+
+                        Container(
+                          margin: EdgeInsets.all(8),
+                          padding: EdgeInsets.symmetric(vertical: 8),
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Book Now",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
           
 
 
