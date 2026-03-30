@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smp/Home.dart';
 import 'package:smp/login.dart';
 
 class Signin extends StatefulWidget {
@@ -161,7 +162,12 @@ class _SigninState extends State<Signin> {
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Home()),
+                        );
+                      },
                       child: Text("Sign up",
                         style: TextStyle(
                           color: Colors.white,
