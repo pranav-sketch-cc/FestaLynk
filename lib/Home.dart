@@ -9,6 +9,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFEDF1F3),
       appBar: AppBar(
+
         leading: IconButton(onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()));}, icon: const Icon(Icons.menu)),
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
@@ -21,11 +22,33 @@ class HomePage extends StatelessWidget {
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           ],
         ),
-        actions: const [
-          Icon(Icons.notifications),
-          SizedBox(width: 10),
-          CircleAvatar(child: Icon(Icons.person)),
-          SizedBox(width: 10),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Stack(
+              children: [
+                Icon(Icons.notifications),
+                Positioned(
+                  right: 0,
+                  top: 0,
+                  child: Container(
+                    padding: EdgeInsets.all(4),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Text(
+                      "2",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
 
@@ -33,11 +56,17 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
 
+            Container(
+              color: Colors.red,
+              child: Image.asset(
+                "images/home1.png",
+                width: double.infinity,
+                fit: BoxFit.contain,
+              ),
+            ),
+            
 
 
-            SizedBox(height: 50,),
-
-            // 🔍 Search
             Padding(
               padding: const EdgeInsets.all(12),
               child: Container(
@@ -60,7 +89,6 @@ class HomePage extends StatelessWidget {
               ),
             ),
 
-            // 📌 Upcoming Events
             sectionTitle("Upcoming Events"),
 
             SizedBox(
@@ -72,19 +100,28 @@ class HomePage extends StatelessWidget {
                     title: "Tech Innovators Summit",
                     location: "Chennai",
                     date: "25 APR",
-                    image: "https://via.placeholder.com/200",
+                    image: "images/image1.png",
                   ),
+
                   eventCard(
                     title: "Entrepreneurs Conference",
                     location: "Hyderabad",
                     date: "03 MAY",
-                    image: "https://via.placeholder.com/200",
+                    image: "images/image2.png",
                   ),
+
+                  eventCard(
+                    title: "Tech Innovators Summit",
+                    location: "Chennai",
+                    date: "25 APR",
+                    image: "images/image1.png",
+                  ),
+
                 ],
               ),
             ),
 
-            // 📂 Categories
+
             sectionTitle("Browse Categories"),
 
             SingleChildScrollView(
@@ -99,7 +136,7 @@ class HomePage extends StatelessWidget {
               ),
             ),
 
-            // 🏫 Colleges
+
             sectionTitle("Popular Colleges"),
 
             SizedBox(
@@ -107,9 +144,13 @@ class HomePage extends StatelessWidget {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  collegeCard("Christ University", "Bangalore"),
-                  collegeCard("VIT University", "Vellore"),
-                  collegeCard("New Prince", "Chennai"),
+                  collegeCard(
+                      name:"Christ University",
+                      place:"Bangalore",
+                      image:"images/image3.png"
+                  ),
+                  collegeCard("VIT University", "Vellore","images/image4.png"),
+                  collegeCard("New Prince", "Chennai","images/image3.png"),
                 ],
               ),
             ),
@@ -117,18 +158,22 @@ class HomePage extends StatelessWidget {
         ),
       ),
 
-      // 🔻 Bottom Nav
+
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Color(0xFF1D61E7),
+        unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.add_circle), label: ""),
+          BottomNavigationBarItem(icon: Icon(Icons.add_circle), label: "Create"),
           BottomNavigationBarItem(icon: Icon(Icons.explore), label: "Explore"),
         ],
       ),
     );
   }
 
-  // 🔹 Reusable Widgets
+
 
   Widget sectionTitle(String title) {
     return Padding(
@@ -137,7 +182,7 @@ class HomePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-          const Text("View All", style: TextStyle(color: Colors.blue)),
+          const Text("View All", style: TextStyle(color: Color(0xFF1D61E7))),
         ],
       ),
     );
@@ -145,7 +190,7 @@ class HomePage extends StatelessWidget {
 
   Widget eventCard({required String title, required String location, required String date, required String image}) {
     return Container(
-      width: 220,
+      width: 190,
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
@@ -153,17 +198,34 @@ class HomePage extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Image.network(image, height: 120, fit: BoxFit.cover),
+          Image.asset(image, height: 130, fit: BoxFit.contain, ),
           Padding(
             padding: const EdgeInsets.all(8),
             child: Column(
               children: [
                 Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
                 Text(location),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text("Save Now"),
-                )
+            Container(
+              padding: EdgeInsets.all(10),
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text("Save Now",
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF1D61E7),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 40,
+                      vertical: 10
+                  ),
+                ),
+              ),
+            ),
               ],
             ),
           )
@@ -177,16 +239,14 @@ class HomePage extends StatelessWidget {
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Color(0xFF1170EB), Color(0xFF3189E7)],
-        ),
+        color: Color(0xFF1D61E7),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Text(name, style: const TextStyle(color: Colors.white)),
     );
   }
 
-  Widget collegeCard(String name, String place) {
+  Widget collegeCard(String name, String place, String image) {
     return Container(
       width: 200,
       margin: const EdgeInsets.all(10),
@@ -197,7 +257,7 @@ class HomePage extends StatelessWidget {
       ),
       child: Column(
         children: [
-          const Placeholder(fallbackHeight: 100),
+          Image.asset(image, height: 100, fit: BoxFit.contain, ),
           Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
           Text(place),
         ],
