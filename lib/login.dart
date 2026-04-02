@@ -148,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const Home())
+                        MaterialPageRoute(builder: (context) =>  HomePage())
                       );
                     },
                     child: Text("Log in",

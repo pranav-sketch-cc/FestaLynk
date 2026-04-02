@@ -165,7 +165,7 @@ class _SigninState extends State<Signin> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const Home()),
+                          MaterialPageRoute(builder: (context) => HomePage()),
                         );
                       },
                       child: Text("Sign up",
