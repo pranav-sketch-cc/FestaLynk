@@ -1,3 +1,4 @@
+import 'package:FestaLynk/createsuccess.dart';
 import 'package:flutter/material.dart';
 
 class CreatePage extends StatelessWidget {
@@ -414,7 +415,12 @@ class CreatePage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Createsuccess()),
+                        );
+                      },
                       child: const Text(
                         "Upload",
                         style: TextStyle(color: Colors.white),
