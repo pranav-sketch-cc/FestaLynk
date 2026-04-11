@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smp/newPass.dart';
+import 'package:FestaLynk/newPass.dart';
 
 
 class Otp extends StatefulWidget{

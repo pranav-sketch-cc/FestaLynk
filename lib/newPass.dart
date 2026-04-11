@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smp/newPassSucc.dart';
+import 'package:FestaLynk/newPassSucc.dart';
 
 class Newpass extends StatefulWidget {
 

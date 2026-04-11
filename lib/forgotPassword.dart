@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smp/otp.dart';
+import 'package:FestaLynk/otp.dart';
 import 'signin.dart';
 
 class Forgotpassword extends StatefulWidget {

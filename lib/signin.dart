@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smp/Home.dart';
-import 'package:smp/login.dart';
+import 'package:FestaLynk/Home.dart';
+import 'package:FestaLynk/login.dart';
 
 class Signin extends StatefulWidget {
   const Signin({super.key});

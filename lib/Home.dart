@@ -1,16 +1,38 @@
+import 'package:FestaLynk/create.dart';
+import 'package:FestaLynk/explore.dart';
 import 'package:flutter/material.dart';
-import 'package:smp/login.dart';
+import 'package:FestaLynk/login.dart';
 
-class HomePage extends StatelessWidget {
-   const HomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _pages = [
+      _buildHomeContent(),
+      const CreatePage(),
+      const ExplorePage(),
+    ];
+
     return Scaffold(
       backgroundColor: const Color(0xFFEDF1F3),
       appBar: AppBar(
-
-        leading: IconButton(onPressed: () { Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginScreen()));}, icon: const Icon(Icons.menu)),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const LoginScreen()),
+            );
+          },
+          icon: const Icon(Icons.menu),
+        ),
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         elevation: 1,
@@ -27,17 +49,17 @@ class HomePage extends StatelessWidget {
             onPressed: () {},
             icon: Stack(
               children: [
-                Icon(Icons.notifications),
+                const Icon(Icons.notifications),
                 Positioned(
                   right: 0,
                   top: 0,
                   child: Container(
-                    padding: EdgeInsets.all(4),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.all(4),
+                    decoration: const BoxDecoration(
                       color: Colors.red,
                       shape: BoxShape.circle,
                     ),
-                    child: Text(
+                    child: const Text(
                       "2",
                       style: TextStyle(
                         color: Colors.white,
@@ -51,118 +73,16 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-
-            Container(
-              color: Colors.red,
-              child: Image.asset(
-                "images/home1.png",
-                width: double.infinity,
-                fit: BoxFit.contain,
-              ),
-            ),
-            
-
-
-            Padding(
-              padding: const EdgeInsets.all(12),
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                height: 50,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: const [
-                    BoxShadow(color: Colors.black26, blurRadius: 4)
-                  ],
-                ),
-                child: const Row(
-                  children: [
-                    Icon(Icons.search),
-                    SizedBox(width: 10),
-                    Text("Search", style: TextStyle(color: Colors.grey)),
-                  ],
-                ),
-              ),
-            ),
-
-            sectionTitle("Upcoming Events"),
-
-            SizedBox(
-              height: 280,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  eventCard(
-                    title: "Tech Innovators Summit",
-                    location: "Chennai",
-                    date: "25 APR",
-                    image: "images/image1.png",
-                  ),
-
-                  eventCard(
-                    title: "Entrepreneurs Conference",
-                    location: "Hyderabad",
-                    date: "03 MAY",
-                    image: "images/image2.png",
-                  ),
-
-                  eventCard(
-                    title: "Tech Innovators Summit",
-                    location: "Chennai",
-                    date: "25 APR",
-                    image: "images/image1.png",
-                  ),
-
-                ],
-              ),
-            ),
-
-
-            sectionTitle("Browse Categories"),
-
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  categoryCard("Workshops"),
-                  categoryCard("Seminars"),
-                  categoryCard("Cultural"),
-                  categoryCard("Hackathons"),
-                ],
-              ),
-            ),
-
-
-            sectionTitle("Popular Colleges"),
-
-            SizedBox(
-              height: 200,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  collegeCard(
-                      name:"Christ University",
-                      place:"Bangalore",
-                      image:"images/image3.png"
-                  ),
-                  collegeCard("VIT University", "Vellore","images/image4.png"),
-                  collegeCard("New Prince", "Chennai","images/image3.png"),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-
-
+      body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Color(0xFF1D61E7),
+        selectedItemColor: const Color(0xFF1D61E7),
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
@@ -173,7 +93,93 @@ class HomePage extends StatelessWidget {
     );
   }
 
-
+  Widget _buildHomeContent() {
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            child: Image.asset(
+              "images/home1.png",
+              width: double.infinity,
+              fit: BoxFit.contain,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              height: 50,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: const [
+                  BoxShadow(color: Colors.black26, blurRadius: 4)
+                ],
+              ),
+              child: const Row(
+                children: [
+                  Icon(Icons.search),
+                  SizedBox(width: 10),
+                  Text("Search", style: TextStyle(color: Colors.grey)),
+                ],
+              ),
+            ),
+          ),
+          sectionTitle("Upcoming Events"),
+          SizedBox(
+            height: 280,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                eventCard(
+                  title: "Tech Innovators Summit",
+                  location: "Chennai",
+                  date: "25 APR",
+                  image: "images/image1.png",
+                ),
+                eventCard(
+                  title: "Entrepreneurs Conference",
+                  location: "Hyderabad",
+                  date: "03 MAY",
+                  image: "images/image2.png",
+                ),
+                eventCard(
+                  title: "Tech Innovators Summit",
+                  location: "Chennai",
+                  date: "25 APR",
+                  image: "images/image1.png",
+                ),
+              ],
+            ),
+          ),
+          sectionTitle("Browse Categories"),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                categoryCard("images/vector1.png", "Workshops"),
+                categoryCard("images/vector2.png", "Seminars"),
+                categoryCard("images/vector3.png", "Cultural"),
+                categoryCard("images/vector4.png", "Hackathons"),
+              ],
+            ),
+          ),
+          sectionTitle("Popular Colleges"),
+          SizedBox(
+            height: 200,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                collegeCard("Christ University", "Bangalore", "images/image3.png"),
+                collegeCard("VIT University", "Vellore", "images/image4.png"),
+                collegeCard("New Prince", "Chennai", "images/image3.png"),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget sectionTitle(String title) {
     return Padding(
@@ -198,34 +204,35 @@ class HomePage extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Image.asset(image, height: 130, fit: BoxFit.contain, ),
+          Image.asset(image, height: 130, fit: BoxFit.contain),
           Padding(
             padding: const EdgeInsets.all(8),
             child: Column(
               children: [
                 Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
                 Text(location),
-            Container(
-              padding: EdgeInsets.all(10),
-              child: ElevatedButton(
-                onPressed: () {},
-                child: Text("Save Now",
-                  style: TextStyle(
-                    color: Colors.white,
+                Container(
+                  padding: const EdgeInsets.all(10),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF1D61E7),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 40,
+                        vertical: 10,
+                      ),
+                    ),
+                    child: const Text(
+                      "Save Now",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF1D61E7),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  padding: EdgeInsets.symmetric(
-                      horizontal: 40,
-                      vertical: 10
-                  ),
-                ),
-              ),
-            ),
               ],
             ),
           )
@@ -234,15 +241,21 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget categoryCard(String name) {
+  Widget categoryCard(String image, String name) {
     return Container(
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Color(0xFF1D61E7),
+        color: const Color(0xFF1D61E7),
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Text(name, style: const TextStyle(color: Colors.white)),
+      child: Row(
+        children: [
+          Image.asset(image, height: 20, fit: BoxFit.contain),
+          const SizedBox(width: 10),
+          Text(name, style: const TextStyle(color: Colors.white)),
+        ],
+      ),
     );
   }
 
@@ -257,7 +270,7 @@ class HomePage extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Image.asset(image, height: 100, fit: BoxFit.contain, ),
+          Image.asset(image, height: 100, fit: BoxFit.contain),
           Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
           Text(place),
         ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:smp/Home.dart';
-import 'package:smp/forgotPassword.dart';
-import 'package:smp/signin.dart';
+import 'package:FestaLynk/Home.dart';
+import 'package:FestaLynk/forgotPassword.dart';
+import 'package:FestaLynk/signin.dart';
 
 
 class LoginScreen extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smp/login.dart';
+import 'package:FestaLynk/login.dart';
 
 class Newpasssucc extends StatefulWidget {
 
