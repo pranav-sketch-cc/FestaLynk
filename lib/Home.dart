@@ -1,3 +1,4 @@
+import 'package:FestaLynk/about_us.dart';
 import 'package:FestaLynk/create.dart';
 import 'package:FestaLynk/explore.dart';
 import 'package:FestaLynk/notifications.dart';
@@ -148,6 +149,10 @@ class _HomePageState extends State<HomePage> {
               title: const Text('About Us'),
               onTap: () {
                 Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AboutUsPage()),
+                );
               },
             ),
             const Divider(),
