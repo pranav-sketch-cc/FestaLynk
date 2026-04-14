@@ -234,7 +234,7 @@ class _HomePageState extends State<HomePage> {
                   title: "Tech Innovators Summit",
                   location: "Chennai",
                   date: "25 APR",
-                  image: "https://flocard.centralindia.cloudapp.azure.com/temp/631c8470-0b58-40a9-8e62-9a5239ba6811_event_images%20(9).jpg",
+                  image: "images/img.png",
                   collegeName: "IIT Madras",
                   startDate: "25 APR",
                   endDate: "27 APR",
@@ -249,7 +249,7 @@ class _HomePageState extends State<HomePage> {
                   title: "Entrepreneurs Conference",
                   location: "Hyderabad",
                   date: "03 MAY",
-                  image: "https://d2cax41o7ahm5l.cloudfront.net/cs/upload-images/entrepreneurship2026-34412.jpg",
+                  image: "images/img_1.png",
                   collegeName: "ISB Hyderabad",
                   startDate: "03 MAY",
                   endDate: "05 MAY",
@@ -264,7 +264,7 @@ class _HomePageState extends State<HomePage> {
                   title: "Tech Innovators Summit",
                   location: "Chennai",
                   date: "25 APR",
-                  image: "https://flocard.centralindia.cloudapp.azure.com/temp/631c8470-0b58-40a9-8e62-9a5239ba6811_event_images%20(9).jpg",
+                  image: "images/img.png",
                   collegeName: "IIT Madras",
                   startDate: "25 APR",
                   endDate: "27 APR",
@@ -296,9 +296,9 @@ class _HomePageState extends State<HomePage> {
             child: ListView(
               scrollDirection: Axis.horizontal,
               children: [
-                collegeCard("Christ University", "Bangalore", "https://www.iesonline.co.in/colleges-image/christ-university.jpg"),
-                collegeCard("VIT University", "Vellore", "https://images.shiksha.com/mediadata/images/articles/1656187006phpmZp2II.jpeg"),
-                collegeCard("New Prince", "Chennai", "https://images.shiksha.com/mediadata/images/articles/1765773848phpMI1Jqr.jpeg"),
+                collegeCard("Christ University", "Bangalore", "images/img_2.png"),
+                collegeCard("VIT University", "Vellore", "images/img_3.png"),
+                collegeCard("New Prince", "Chennai", "images/img_4.png"),
               ],
             ),
           ),
@@ -377,7 +377,7 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.network(image, height: 120, width: double.infinity, fit: BoxFit.cover),
+                child: Image.asset(image, height: 120, width: double.infinity, fit: BoxFit.cover),
               ),
             ),
             Padding(
@@ -462,7 +462,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.network(image, height: 100, width: double.infinity, fit: BoxFit.cover),
+              child: Image.asset(image, height: 100, width: double.infinity, fit: BoxFit.cover),
             ),
           ),
           Padding(
