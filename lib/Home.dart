@@ -1,6 +1,7 @@
 import 'package:FestaLynk/create.dart';
 import 'package:FestaLynk/explore.dart';
 import 'package:FestaLynk/notifications.dart';
+import 'package:FestaLynk/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:FestaLynk/login.dart';
 
@@ -112,9 +113,10 @@ class _HomePageState extends State<HomePage> {
               title: const Text('Profile'),
               onTap: () {
                 Navigator.pop(context);
-                setState(() {
-                  _currentIndex = 0;
-                });
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ProfilePage()),
+                );
               },
             ),
             ListTile(
