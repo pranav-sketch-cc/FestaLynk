@@ -1,5 +1,6 @@
 import 'package:FestaLynk/create.dart';
 import 'package:FestaLynk/explore.dart';
+import 'package:FestaLynk/notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:FestaLynk/login.dart';
 
@@ -24,14 +25,13 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: const Color(0xFFEDF1F3),
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const LoginScreen()),
-            );
-          },
-          icon: const Icon(Icons.menu),
+        leading: Builder(
+          builder: (context) => IconButton(
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+            icon: const Icon(Icons.menu),
+          ),
         ),
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
@@ -46,7 +46,12 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const NotificationsPage()),
+              );
+            },
             icon: Stack(
               children: [
                 const Icon(Icons.notifications),
@@ -72,6 +77,73 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color(0xFF1D61E7),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundColor: Colors.white,
+                    child: Icon(Icons.person, size: 40, color: Color(0xFF1D61E7)),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    'Prashanth',
+                    style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    'prashanth@email.com',
+                    style: TextStyle(color: Colors.white70, fontSize: 14),
+                  ),
+                ],
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text('Profile'),
+              onTap: () {
+                Navigator.pop(context);
+                setState(() {
+                  _currentIndex = 0;
+                });
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.bookmark_border),
+              title: const Text('Saved Events'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.find_in_page),
+              title: const Text('About Us'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            const Divider(),
+            ListTile(
+              leading: const Icon(Icons.logout, color: Colors.red),
+              title: const Text('Logout', style: TextStyle(color: Colors.red)),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
+                );
+              },
+            ),
+          ],
+        ),
       ),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -187,7 +259,7 @@ class _HomePageState extends State<HomePage> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
+          Text(title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
           const Text("View All", style: TextStyle(color: Color(0xFF1D61E7))),
         ],
       ),
@@ -253,7 +325,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           Image.asset(image, height: 20, fit: BoxFit.contain),
           const SizedBox(width: 10),
-          Text(name, style: const TextStyle(color: Colors.white)),
+          Text(name, style: const TextStyle(color: Colors.white, fontSize: 16) ),
         ],
       ),
     );
@@ -271,7 +343,7 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         children: [
           Image.asset(image, height: 100, fit: BoxFit.contain),
-          Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
+          Text(name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17)),
           Text(place),
         ],
       ),
