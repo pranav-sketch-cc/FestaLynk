@@ -310,7 +310,20 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   padding: const EdgeInsets.all(10),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: const Text("Saved" , textAlign: TextAlign.center,),
+                          backgroundColor: Colors.black.withOpacity(0.7),
+                          duration: const Duration(seconds: 1),
+                          behavior: SnackBarBehavior.floating,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          width: 100,
+                        ),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF1D61E7),
                       shape: RoundedRectangleBorder(

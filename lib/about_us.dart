@@ -27,7 +27,7 @@ class AboutUsPage extends StatelessWidget {
             const SizedBox(height: 20),
             Image.asset(
               'images/FestaLynk_logo_with_tagline.png',
-              width: 250,
+              width: 350,
             ),
             const SizedBox(height: 40),
             const Text(
