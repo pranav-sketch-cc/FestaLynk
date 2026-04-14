@@ -11,13 +11,11 @@ class ExplorePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             Image.asset(
               "images/explore_header.png", 
               width: double.infinity,
               fit: BoxFit.cover,
             ),
-
 
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 20, 16, 10),
@@ -41,10 +39,9 @@ class ExplorePage extends StatelessWidget {
               ),
             ),
 
-
             _buildSectionHeader("Recommended for you"),
             SizedBox(
-              height: 240,
+              height: 260,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -65,10 +62,9 @@ class ExplorePage extends StatelessWidget {
               ),
             ),
 
-
             _buildSectionHeader("Trending Now"),
             SizedBox(
-              height: 160,
+              height: 180,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -143,22 +139,25 @@ class ExplorePage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-                child: Image.asset(image, height: 140, width: double.infinity, fit: BoxFit.cover),
-              ),
-              Positioned(
-                top: 10,
-                right: 10,
-                child: Container(
-                  padding: const EdgeInsets.all(6),
-                  decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
-                  child: const Icon(Icons.bookmark_border, size: 20, color: Color(0xFF1D61E7)),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
+            child: Stack(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.asset(image, height: 140, width: double.infinity, fit: BoxFit.cover),
                 ),
-              ),
-            ],
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: Container(
+                    padding: const EdgeInsets.all(6),
+                    decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                    child: const Icon(Icons.bookmark_border, size: 20, color: Color(0xFF1D61E7)),
+                  ),
+                ),
+              ],
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(12),
@@ -216,9 +215,12 @@ class ExplorePage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
-            child: Image.asset(image, height: 80, width: double.infinity, fit: BoxFit.cover),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(6, 6, 6, 0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: Image.asset(image, height: 80, width: double.infinity, fit: BoxFit.cover),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -257,9 +259,12 @@ class ExplorePage extends StatelessWidget {
       ),
       child: Row(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.asset(image, height: 70, width: 70, fit: BoxFit.cover),
+          Padding(
+            padding: const EdgeInsets.all(2.0),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(image, height: 70, width: 70, fit: BoxFit.cover),
+            ),
           ),
           const SizedBox(width: 12),
           Expanded(
