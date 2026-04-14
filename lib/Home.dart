@@ -122,7 +122,7 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.subscriptions),
+              leading: const Icon(Icons.workspace_premium),
               title: const Text('Subscription'),
               onTap: () {
                 Navigator.pop(context);
