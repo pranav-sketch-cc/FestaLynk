@@ -1,5 +1,6 @@
 import 'package:FestaLynk/about_us.dart';
 import 'package:FestaLynk/create.dart';
+import 'package:FestaLynk/event_details.dart';
 import 'package:FestaLynk/explore.dart';
 import 'package:FestaLynk/notifications.dart';
 import 'package:FestaLynk/profile.dart';
@@ -232,18 +233,45 @@ class _HomePageState extends State<HomePage> {
                   location: "Chennai",
                   date: "25 APR",
                   image: "images/image1.png",
+                  collegeName: "IIT Madras",
+                  startDate: "25 APR",
+                  endDate: "27 APR",
+                  description: "Join the elite Tech Innovators Summit at IIT Madras. Experience cutting-edge workshops, network with industry leaders, and showcase your groundbreaking projects.",
+                  mode: "Offline",
+                  registrationUrl: "https://iitm.ac.in/techsummit",
+                  registrationAmount: "₹500",
+                  eventType: "Hackathon",
+                  registrationDeadline: "20 APR",
                 ),
                 eventCard(
                   title: "Entrepreneurs Conference",
                   location: "Hyderabad",
                   date: "03 MAY",
                   image: "images/image2.png",
+                  collegeName: "ISB Hyderabad",
+                  startDate: "03 MAY",
+                  endDate: "05 MAY",
+                  description: "Connect with successful startup founders and venture capitalists. Gain insights into the entrepreneurial ecosystem and learn how to scale your business.",
+                  mode: "Hybrid",
+                  registrationUrl: "https://isb.edu/conference",
+                  registrationAmount: "₹1200",
+                  eventType: "Conference",
+                  registrationDeadline: "28 APR",
                 ),
                 eventCard(
                   title: "Tech Innovators Summit",
                   location: "Chennai",
                   date: "25 APR",
                   image: "images/image1.png",
+                  collegeName: "IIT Madras",
+                  startDate: "25 APR",
+                  endDate: "27 APR",
+                  description: "Join the elite Tech Innovators Summit at IIT Madras. Experience cutting-edge workshops, network with industry leaders, and showcase your groundbreaking projects.",
+                  mode: "Offline",
+                  registrationUrl: "https://iitm.ac.in/techsummit",
+                  registrationAmount: "₹500",
+                  eventType: "Hackathon",
+                  registrationDeadline: "20 APR",
                 ),
               ],
             ),
@@ -290,62 +318,102 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget eventCard({required String title, required String location, required String date, required String image}) {
-    return Container(
-      width: 190,
-      margin: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
-        color: Colors.white,
-      ),
-      child: Column(
-        children: [
-          Image.asset(image, height: 130, fit: BoxFit.contain),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: Column(
-              children: [
-                Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-                Text(location),
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: const Text("Saved" , textAlign: TextAlign.center,),
-                          backgroundColor: Colors.black.withOpacity(0.7),
-                          duration: const Duration(seconds: 1),
-                          behavior: SnackBarBehavior.floating,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
+  Widget eventCard({
+    required String title,
+    required String location,
+    required String date,
+    required String image,
+    required String collegeName,
+    required String startDate,
+    required String endDate,
+    required String description,
+    required String mode,
+    required String registrationUrl,
+    required String registrationAmount,
+    required String eventType,
+    required String registrationDeadline,
+  }) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => EventDetailsPage(
+              title: title,
+              image: image,
+              startDate: startDate,
+              endDate: endDate,
+              description: description,
+              mode: mode,
+              collegeName: collegeName,
+              location: location,
+              registrationUrl: registrationUrl,
+              registrationAmount: registrationAmount,
+              eventType: eventType,
+              registrationDeadline: registrationDeadline,
+            ),
+          ),
+        );
+      },
+      child: Container(
+        width: 190,
+        margin: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          color: Colors.white,
+        ),
+        child: Column(
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
+              child: Image.asset(image, height: 130, width: double.infinity, fit: BoxFit.cover),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: Column(
+                children: [
+                  Text(title, style: const TextStyle(fontWeight: FontWeight.bold), maxLines: 1, overflow: TextOverflow.ellipsis),
+                  Text(location, maxLines: 1, overflow: TextOverflow.ellipsis),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: const Text("Saved" , textAlign: TextAlign.center,),
+                            backgroundColor: Colors.black.withOpacity(0.5),
+                            duration: const Duration(seconds: 1),
+                            behavior: SnackBarBehavior.floating,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            width: 100,
                           ),
-                          width: 100,
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF1D61E7),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF1D61E7),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 40,
+                          vertical: 10,
+                        ),
                       ),
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 40,
-                        vertical: 10,
-                      ),
-                    ),
-                    child: const Text(
-                      "Save Now",
-                      style: TextStyle(
-                        color: Colors.white,
+                      child: const Text(
+                        "Save Now",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          )
-        ],
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
