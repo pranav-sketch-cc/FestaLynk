@@ -403,17 +403,18 @@ class CreatePage extends StatelessWidget {
                   ),
 
 
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 30),
 
                   SizedBox(
                     width: double.infinity,
-                    height: 50,
+                    height: 55,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF1D61E7),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
+                        elevation: 4,
                       ),
                       onPressed: () {
                         Navigator.push(
@@ -421,12 +422,29 @@ class CreatePage extends StatelessWidget {
                           MaterialPageRoute(builder: (context) => const Createsuccess()),
                         );
                       },
-                      child: const Text(
-                        "Upload",
-                        style: TextStyle(color: Colors.white),
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Upload Event",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "Costs 25 Credits",
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
+                  const SizedBox(height: 20),
                 ],
               ),
             ),

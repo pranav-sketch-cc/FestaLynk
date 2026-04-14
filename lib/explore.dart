@@ -11,7 +11,14 @@ class ExplorePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // 🔍 Search Bar Section
+
+            Image.asset(
+              "images/explore_header.png", 
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+
+
             Padding(
               padding: const EdgeInsets.fromLTRB(16, 20, 16, 10),
               child: Container(
@@ -34,7 +41,7 @@ class ExplorePage extends StatelessWidget {
               ),
             ),
 
-            // 🌟 Recommended for you
+
             _buildSectionHeader("Recommended for you"),
             SizedBox(
               height: 240,
@@ -58,7 +65,7 @@ class ExplorePage extends StatelessWidget {
               ),
             ),
 
-            // 🔥 Trending Now
+
             _buildSectionHeader("Trending Now"),
             SizedBox(
               height: 160,
@@ -73,7 +80,6 @@ class ExplorePage extends StatelessWidget {
               ),
             ),
 
-            // 📍 Events near you
             _buildSectionHeader("Events near you"),
             _buildNearMeItem(
               "Workshop on AI",

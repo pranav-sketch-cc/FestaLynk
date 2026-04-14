@@ -29,9 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
         actions: [
           IconButton(
             icon: const Icon(Icons.edit, color: Color(0xFF1D61E7)),
-            onPressed: () {
-              // Action for editing profile
-            },
+            onPressed: () {},
           ),
         ],
       ),
@@ -110,9 +108,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       elevation: 2,
                     ),
-                    onPressed: () {
-                      // Action for saving changes or other
-                    },
+                    onPressed: () {},
                     child: const Text(
                       "Save Changes",
                       style: TextStyle(

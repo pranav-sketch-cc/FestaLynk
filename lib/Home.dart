@@ -2,6 +2,8 @@ import 'package:FestaLynk/create.dart';
 import 'package:FestaLynk/explore.dart';
 import 'package:FestaLynk/notifications.dart';
 import 'package:FestaLynk/profile.dart';
+import 'package:FestaLynk/saved_events.dart';
+import 'package:FestaLynk/subscription.dart';
 import 'package:flutter/material.dart';
 import 'package:FestaLynk/login.dart';
 
@@ -120,10 +122,25 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.subscriptions),
+              title: const Text('Subscription'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SubscriptionPage()),
+                );
+              },
+            ),
+            ListTile(
               leading: const Icon(Icons.bookmark_border),
               title: const Text('Saved Events'),
               onTap: () {
                 Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SavedEventsPage()),
+                );
               },
             ),
             ListTile(
