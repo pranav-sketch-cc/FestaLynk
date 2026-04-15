@@ -92,33 +92,35 @@ class CreatePage extends StatelessWidget {
                   const SizedBox(height: 10),
 
                   Stack(
-                    alignment: Alignment(0.07,0.38),
+                    alignment: AlignmentGeometry.xy(0.079, 0.42),
                     children: [
-                       Image.asset("images/uploadimg.png",),
-
-                      SizedBox(
-                        width: 160,
-                        height: 40,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color(0xFF1D61E7),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(3),
-                            ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.asset(
+                          "images/uploadimg.png",
+                          width: double.infinity,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      ElevatedButton.icon(
+                        onPressed: () {},
+                        icon: const Icon(Icons.cloud_upload, color: Colors.white),
+                        label: const Text(
+                          "Choose Image",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
                           ),
-                          onPressed: () {},
-                          child: const Text(
-                            "Upload",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold
-                            ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF1D61E7),
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
                           ),
                         ),
                       ),
-
-
-                   ],
+                    ],
                   ),
 
                   const SizedBox(height: 20),
