@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_unnecessary_containers, no_leading_underscores_for_local_identifiers, file_names, deprecated_member_use
-
 import 'package:FestaLynk/about_us.dart';
 import 'package:FestaLynk/create.dart';
 import 'package:FestaLynk/event_details.dart';
