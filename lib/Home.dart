@@ -1,4 +1,5 @@
 import 'package:FestaLynk/about_us.dart';
+import 'package:FestaLynk/all_events.dart';
 import 'package:FestaLynk/college_list.dart';
 import 'package:FestaLynk/create.dart';
 import 'package:FestaLynk/event_details.dart';
@@ -19,6 +20,68 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
+  final TextEditingController _searchController = TextEditingController();
+  bool _isSearching = false;
+  List<Map<String, dynamic>> _allEvents = [];
+  List<Map<String, dynamic>> _filteredEvents = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _allEvents = [
+      {
+        "title": "Tech Innovators Summit",
+        "location": "Chennai",
+        "date": "25 APR",
+        "image": "images/img.png",
+        "collegeName": "IIT Madras",
+        "startDate": "25 APR",
+        "endDate": "27 APR",
+        "description": "Join the elite Tech Innovators Summit at IIT Madras. Experience cutting-edge workshops, network with industry leaders, and showcase your groundbreaking projects.",
+        "mode": "Offline",
+        "registrationUrl": "https://iitm.ac.in/techsummit",
+        "registrationAmount": "₹500",
+        "eventType": "Hackathon",
+        "registrationDeadline": "20 APR",
+      },
+      {
+        "title": "Entrepreneurs Conference",
+        "location": "Hyderabad",
+        "date": "03 MAY",
+        "image": "images/img_1.png",
+        "collegeName": "ISB Hyderabad",
+        "startDate": "03 MAY",
+        "endDate": "05 MAY",
+        "description": "Connect with successful startup founders and venture capitalists. Gain insights into the entrepreneurial ecosystem and learn how to scale your business.",
+        "mode": "Hybrid",
+        "registrationUrl": "https://isb.edu/conference",
+        "registrationAmount": "₹1200",
+        "eventType": "Conference",
+        "registrationDeadline": "28 APR",
+      },
+    ];
+    _filteredEvents = _allEvents;
+  }
+
+  void _runFilter(String enteredKeyword) {
+    List<Map<String, dynamic>> results = [];
+    if (enteredKeyword.isEmpty) {
+      setState(() {
+        _isSearching = false;
+      });
+    } else {
+      results = _allEvents
+          .where((event) =>
+              event["title"].toLowerCase().contains(enteredKeyword.toLowerCase()) ||
+              event["collegeName"].toLowerCase().contains(enteredKeyword.toLowerCase()) ||
+              event["eventType"].toLowerCase().contains(enteredKeyword.toLowerCase()))
+          .toList();
+      setState(() {
+        _isSearching = true;
+        _filteredEvents = results;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -194,6 +257,7 @@ class _HomePageState extends State<HomePage> {
   Widget _buildHomeContent() {
     return SingleChildScrollView(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             child: Image.asset(
@@ -214,97 +278,152 @@ class _HomePageState extends State<HomePage> {
                   BoxShadow(color: Colors.black26, blurRadius: 4)
                 ],
               ),
-              child: const Row(
+              child: Row(
                 children: [
-                  Icon(Icons.search),
-                  SizedBox(width: 10),
-                  Text("Search", style: TextStyle(color: Colors.grey)),
+                  const Icon(Icons.search, color: Colors.grey),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: TextField(
+                      controller: _searchController,
+                      onChanged: (value) => _runFilter(value),
+                      decoration: const InputDecoration(
+                        hintText: "Search",
+                        hintStyle: TextStyle(color: Colors.grey),
+                        border: InputBorder.none,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
-          sectionTitle("Upcoming Events", onPressed: () {}),
-          SizedBox(
-            height: 300,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                eventCard(
-                  title: "Tech Innovators Summit",
-                  location: "Chennai",
-                  date: "25 APR",
-                  image: "images/img.png",
-                  collegeName: "IIT Madras",
-                  startDate: "25 APR",
-                  endDate: "27 APR",
-                  description: "Join the elite Tech Innovators Summit at IIT Madras. Experience cutting-edge workshops, network with industry leaders, and showcase your groundbreaking projects.",
-                  mode: "Offline",
-                  registrationUrl: "https://iitm.ac.in/techsummit",
-                  registrationAmount: "₹500",
-                  eventType: "Hackathon",
-                  registrationDeadline: "20 APR",
-                ),
-                eventCard(
-                  title: "Entrepreneurs Conference",
-                  location: "Hyderabad",
-                  date: "03 MAY",
-                  image: "images/img_1.png",
-                  collegeName: "ISB Hyderabad",
-                  startDate: "03 MAY",
-                  endDate: "05 MAY",
-                  description: "Connect with successful startup founders and venture capitalists. Gain insights into the entrepreneurial ecosystem and learn how to scale your business.",
-                  mode: "Hybrid",
-                  registrationUrl: "https://isb.edu/conference",
-                  registrationAmount: "₹1200",
-                  eventType: "Conference",
-                  registrationDeadline: "28 APR",
-                ),
-                eventCard(
-                  title: "Tech Innovators Summit",
-                  location: "Chennai",
-                  date: "25 APR",
-                  image: "images/img.png",
-                  collegeName: "IIT Madras",
-                  startDate: "25 APR",
-                  endDate: "27 APR",
-                  description: "Join the elite Tech Innovators Summit at IIT Madras. Experience cutting-edge workshops, network with industry leaders, and showcase your groundbreaking projects.",
-                  mode: "Offline",
-                  registrationUrl: "https://iitm.ac.in/techsummit",
-                  registrationAmount: "₹500",
-                  eventType: "Hackathon",
-                  registrationDeadline: "20 APR",
-                ),
-              ],
+          if (_isSearching) ...[
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              child: const Text("Search Results", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
             ),
-          ),
-          sectionTitle("Browse Categories", onPressed: () {}),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                categoryCard("images/vector1.png", "Workshops"),
-                categoryCard("images/vector2.png", "Seminars"),
-                categoryCard("images/vector3.png", "Cultural"),
-                categoryCard("images/vector4.png", "Hackathons"),
-              ],
-            ),
-          ),
-          sectionTitle("Popular Colleges", onPressed: () {
-            Navigator.push(
+            if (_filteredEvents.isEmpty)
+              const Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Center(child: Text("No events found.")),
+              )
+            else
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: _filteredEvents.length,
+                itemBuilder: (context, index) {
+                  final event = _filteredEvents[index];
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: eventCard(
+                      title: event["title"],
+                      location: event["location"],
+                      date: event["date"],
+                      image: event["image"],
+                      collegeName: event["collegeName"],
+                      startDate: event["startDate"],
+                      endDate: event["endDate"],
+                      description: event["description"],
+                      mode: event["mode"],
+                      registrationUrl: event["registrationUrl"],
+                      registrationAmount: event["registrationAmount"],
+                      eventType: event["eventType"],
+                      registrationDeadline: event["registrationDeadline"],
+                    ),
+                  );
+                },
+              ),
+          ] else ...[
+            sectionTitle("Upcoming Events", onPressed: () {
+              Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const CollegeListPage()));
-          }),
-          SizedBox(
-            height: 220,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                collegeCard("Christ University", "Bangalore", "images/img_2.png"),
-                collegeCard("VIT University", "Vellore", "images/img_3.png"),
-                collegeCard("New Prince", "Chennai", "images/img_4.png"),
-              ],
+                MaterialPageRoute(builder: (context) => const AllEventsPage()),
+              );
+            }),
+            SizedBox(
+              height: 300,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  eventCard(
+                    title: "Tech Innovators Summit",
+                    location: "Chennai",
+                    date: "25 APR",
+                    image: "images/img.png",
+                    collegeName: "IIT Madras",
+                    startDate: "25 APR",
+                    endDate: "27 APR",
+                    description: "Join the elite Tech Innovators Summit at IIT Madras. Experience cutting-edge workshops, network with industry leaders, and showcase your groundbreaking projects.",
+                    mode: "Offline",
+                    registrationUrl: "https://iitm.ac.in/techsummit",
+                    registrationAmount: "₹500",
+                    eventType: "Hackathon",
+                    registrationDeadline: "20 APR",
+                  ),
+                  eventCard(
+                    title: "Entrepreneurs Conference",
+                    location: "Hyderabad",
+                    date: "03 MAY",
+                    image: "images/img_1.png",
+                    collegeName: "ISB Hyderabad",
+                    startDate: "03 MAY",
+                    endDate: "05 MAY",
+                    description: "Connect with successful startup founders and venture capitalists. Gain insights into the entrepreneurial ecosystem and learn how to scale your business.",
+                    mode: "Hybrid",
+                    registrationUrl: "https://isb.edu/conference",
+                    registrationAmount: "₹1200",
+                    eventType: "Conference",
+                    registrationDeadline: "28 APR",
+                  ),
+                  eventCard(
+                    title: "Tech Innovators Summit",
+                    location: "Chennai",
+                    date: "25 APR",
+                    image: "images/img.png",
+                    collegeName: "IIT Madras",
+                    startDate: "25 APR",
+                    endDate: "27 APR",
+                    description: "Join the elite Tech Innovators Summit at IIT Madras. Experience cutting-edge workshops, network with industry leaders, and showcase your groundbreaking projects.",
+                    mode: "Offline",
+                    registrationUrl: "https://iitm.ac.in/techsummit",
+                    registrationAmount: "₹500",
+                    eventType: "Hackathon",
+                    registrationDeadline: "20 APR",
+                  ),
+                ],
+              ),
             ),
-          ),
+            sectionTitle("Browse Categories"),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  categoryCard("images/vector1.png", "Workshops"),
+                  categoryCard("images/vector2.png", "Seminars"),
+                  categoryCard("images/vector3.png", "Cultural"),
+                  categoryCard("images/vector4.png", "Hackathons"),
+                ],
+              ),
+            ),
+            sectionTitle("Popular Colleges", onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CollegeListPage()),
+              );
+            }),
+            SizedBox(
+              height: 220,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  collegeCard("Christ University", "Bangalore", "https://www.iesonline.co.in/colleges-image/christ-university.jpg"),
+                  collegeCard("VIT University", "Vellore", "https://images.shiksha.com/mediadata/images/articles/1656187006phpmZp2II.jpeg"),
+                  collegeCard("New Prince", "Chennai", "https://images.shiksha.com/mediadata/images/articles/1765773848phpMI1Jqr.jpeg"),
+                ],
+              ),
+            ),
+          ],
         ],
       ),
     );
@@ -317,13 +436,14 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
-          TextButton(
-            onPressed: onPressed,
-            child: const Text(
-              "View All",
-              style: TextStyle(color: Color(0xFF1D61E7)),
+          if (onPressed != null)
+            TextButton(
+              onPressed: onPressed,
+              child: const Text(
+                "View All",
+                style: TextStyle(color: Color(0xFF1D61E7)),
+              ),
             ),
-          ),
         ],
       ),
     );
@@ -434,50 +554,61 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget categoryCard(String image, String name) {
-    return Container(
-      margin: const EdgeInsets.all(8),
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: const Color(0xFF1D61E7),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Row(
-        children: [
-          Image.asset(image, height: 20, fit: BoxFit.contain),
-          const SizedBox(width: 10),
-          Text(name, style: const TextStyle(color: Colors.white, fontSize: 16) ),
-        ],
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        margin: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: const Color(0xFF1D61E7),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Row(
+          children: [
+            Image.asset(image, height: 20, fit: BoxFit.contain),
+            const SizedBox(width: 10),
+            Text(name, style: const TextStyle(color: Colors.white, fontSize: 16) ),
+          ],
+        ),
       ),
     );
   }
 
   Widget collegeCard(String name, String place, String image) {
-    return Container(
-      width: 200,
-      margin: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(image, height: 100, width: double.infinity, fit: BoxFit.cover),
+    return GestureDetector(
+      onTap: () {
+       Navigator.push(
+           context,
+           MaterialPageRoute(builder: (context) => const CollegeListPage())
+       );
+       },
+      child: Container(
+        width: 200,
+        margin: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.network(image, height: 100, width: double.infinity, fit: BoxFit.cover),
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Text(name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17), maxLines: 1, overflow: TextOverflow.ellipsis),
-                Text(place, maxLines: 1, overflow: TextOverflow.ellipsis),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Text(name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17), maxLines: 1, overflow: TextOverflow.ellipsis),
+                  Text(place, maxLines: 1, overflow: TextOverflow.ellipsis),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
