@@ -1,66 +1,54 @@
 import 'package:FestaLynk/event_details.dart';
 import 'package:flutter/material.dart';
 
-class AllEventsPage extends StatelessWidget {
-  const AllEventsPage({super.key});
+class VitUniversityPage extends StatelessWidget {
+  const VitUniversityPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> events = [
       {
-        "title": "Tech Innovators Summit",
-        "location": "Chennai",
-        "date": "25 APR",
-        "image": "images/img.png",
-        "college": "IIT Madras",
-        "type": "Hackathon",
-        "mode": "Offline",
-        "price": "₹500",
-        "deadline": "20 APR",
-        "description": "Join the elite Tech Innovators Summit at IIT Madras. Experience cutting-edge workshops, network with industry leaders, and showcase your groundbreaking projects."
-      },
-      {
-        "title": "Entrepreneurs Conference",
-        "location": "Hyderabad",
-        "date": "03 MAY",
-        "image": "images/img_1.png",
-        "college": "ISB Hyderabad",
-        "type": "Conference",
-        "mode": "Hybrid",
-        "price": "₹1200",
-        "deadline": "28 APR",
-        "description": "Connect with successful startup founders and venture capitalists. Gain insights into the entrepreneurial ecosystem and learn how to scale your business."
-      },
-      {
-        "title": "Data Science Workshop",
-        "location": "Online",
-        "date": "10 MAY",
+        "title": "Riviera '24",
+        "location": "Vellore Campus",
+        "date": "10-13 FEB",
         "image": "images/image1.png",
-        "college": "VIT Vellore",
-        "type": "Workshop",
-        "mode": "Online",
-        "price": "₹200",
-        "deadline": "05 MAY",
-        "description": "A comprehensive workshop on Data Science and Machine Learning. Learn from industry experts and work on real-world projects."
-      },
-      {
-        "title": "Cultural Fusion '24",
-        "location": "Bangalore",
-        "date": "15 JUN",
-        "image": "images/image2.png",
-        "college": "Christ University",
+        "college": "VIT University",
         "type": "Cultural",
         "mode": "Offline",
-        "price": "FREE",
-        "deadline": "10 JUN",
-        "description": "Celebrate the spirit of diversity with music, dance, and art performances from across the globe."
+        "price": "₹500",
+        "deadline": "05 FEB",
+        "description": "Riviera is VIT's International Cultural and Sports Fest. It is a 4-day extravaganza featuring a wide range of events, from music and dance to sports and literature."
+      },
+      {
+        "title": "graVITas '24",
+        "location": "Anna Auditorium",
+        "date": "22-24 SEP",
+        "image": "images/image2.png",
+        "college": "VIT University",
+        "type": "Hackathon",
+        "mode": "Offline",
+        "price": "₹300",
+        "deadline": "15 SEP",
+        "description": "graVITas is the annual technological and design carnival of VIT. It is a platform for students to showcase their technical prowess and innovative ideas through various contests and workshops."
+      },
+      {
+        "title": "Workshop on Cyber Security",
+        "location": "Technology Tower",
+        "date": "05 NOV",
+        "image": "images/image3.png",
+        "college": "VIT University",
+        "type": "Workshops",
+        "mode": "Offline",
+        "price": "₹200",
+        "deadline": "01 NOV",
+        "description": "Hands-on workshop on modern cyber security threats and defense mechanisms. Learn from industry experts about ethical hacking and network security."
       },
     ];
 
     return Scaffold(
       backgroundColor: const Color(0xFFEDF1F3),
       appBar: AppBar(
-        title: const Text("Upcoming Events", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
+        title: const Text("VIT University Events", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
         backgroundColor: Colors.white,
         elevation: 1,
         leading: IconButton(
@@ -87,7 +75,7 @@ class AllEventsPage extends StatelessWidget {
                     mode: event["mode"],
                     collegeName: event["college"],
                     location: event["location"],
-                    registrationUrl: "https://festalynk.com/register",
+                    registrationUrl: "https://vit.ac.in/events",
                     registrationAmount: event["price"],
                     eventType: event["type"],
                     registrationDeadline: event["deadline"],
@@ -131,9 +119,9 @@ class AllEventsPage extends StatelessWidget {
                         const SizedBox(height: 8),
                         Row(
                           children: [
-                            const Icon(Icons.school_outlined, size: 16, color: Colors.grey),
+                            const Icon(Icons.location_on_outlined, size: 16, color: Colors.grey),
                             const SizedBox(width: 4),
-                            Text(event["college"], style: const TextStyle(color: Colors.grey, fontSize: 14)),
+                            Text(event["location"], style: const TextStyle(color: Colors.grey, fontSize: 14)),
                             const Spacer(),
                             const Icon(Icons.calendar_today, size: 14, color: Color(0xFF1D61E7)),
                             const SizedBox(width: 4),

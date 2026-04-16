@@ -1,66 +1,54 @@
 import 'package:FestaLynk/event_details.dart';
 import 'package:flutter/material.dart';
 
-class AllEventsPage extends StatelessWidget {
-  const AllEventsPage({super.key});
+class ChristUniversityPage extends StatelessWidget {
+  const ChristUniversityPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> events = [
       {
-        "title": "Tech Innovators Summit",
-        "location": "Chennai",
-        "date": "25 APR",
-        "image": "images/img.png",
-        "college": "IIT Madras",
-        "type": "Hackathon",
-        "mode": "Offline",
-        "price": "₹500",
-        "deadline": "20 APR",
-        "description": "Join the elite Tech Innovators Summit at IIT Madras. Experience cutting-edge workshops, network with industry leaders, and showcase your groundbreaking projects."
-      },
-      {
-        "title": "Entrepreneurs Conference",
-        "location": "Hyderabad",
-        "date": "03 MAY",
-        "image": "images/img_1.png",
-        "college": "ISB Hyderabad",
-        "type": "Conference",
-        "mode": "Hybrid",
-        "price": "₹1200",
-        "deadline": "28 APR",
-        "description": "Connect with successful startup founders and venture capitalists. Gain insights into the entrepreneurial ecosystem and learn how to scale your business."
-      },
-      {
-        "title": "Data Science Workshop",
-        "location": "Online",
-        "date": "10 MAY",
-        "image": "images/image1.png",
-        "college": "VIT Vellore",
-        "type": "Workshop",
-        "mode": "Online",
-        "price": "₹200",
-        "deadline": "05 MAY",
-        "description": "A comprehensive workshop on Data Science and Machine Learning. Learn from industry experts and work on real-world projects."
-      },
-      {
-        "title": "Cultural Fusion '24",
-        "location": "Bangalore",
-        "date": "15 JUN",
-        "image": "images/image2.png",
+        "title": "Bhasha Utsav",
+        "location": "Main Campus, Bangalore",
+        "date": "15 SEP",
+        "image": "images/image3.png",
         "college": "Christ University",
         "type": "Cultural",
         "mode": "Offline",
         "price": "FREE",
-        "deadline": "10 JUN",
-        "description": "Celebrate the spirit of diversity with music, dance, and art performances from across the globe."
+        "deadline": "10 SEP",
+        "description": "Bhasha Utsav is a celebration of the ethnic diversity of Christ University. Students come dressed in their traditional attire and celebrate with music and dance."
+      },
+      {
+        "title": "In-Bloom 2024",
+        "location": "Auditorium Block",
+        "date": "22-24 FEB",
+        "image": "images/image1.png",
+        "college": "Christ University",
+        "type": "Cultural",
+        "mode": "Offline",
+        "price": "₹100",
+        "deadline": "15 FEB",
+        "description": "The biggest inter-collegiate cultural fest of Christ University. A platform for students to showcase their talents in various cultural and literary events."
+      },
+      {
+        "title": "Daksh 2024",
+        "location": "Engineering Block",
+        "date": "10 MAR",
+        "image": "images/image2.png",
+        "college": "Christ University",
+        "type": "Hackathon",
+        "mode": "Offline",
+        "price": "₹300",
+        "deadline": "05 MAR",
+        "description": "An annual science and technology fest. Participate in innovative project exhibitions, coding contests, and technical workshops."
       },
     ];
 
     return Scaffold(
       backgroundColor: const Color(0xFFEDF1F3),
       appBar: AppBar(
-        title: const Text("Upcoming Events", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
+        title: const Text("Christ University Events", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black)),
         backgroundColor: Colors.white,
         elevation: 1,
         leading: IconButton(
@@ -87,7 +75,7 @@ class AllEventsPage extends StatelessWidget {
                     mode: event["mode"],
                     collegeName: event["college"],
                     location: event["location"],
-                    registrationUrl: "https://festalynk.com/register",
+                    registrationUrl: "https://christuniversity.in/events",
                     registrationAmount: event["price"],
                     eventType: event["type"],
                     registrationDeadline: event["deadline"],
@@ -131,9 +119,9 @@ class AllEventsPage extends StatelessWidget {
                         const SizedBox(height: 8),
                         Row(
                           children: [
-                            const Icon(Icons.school_outlined, size: 16, color: Colors.grey),
+                            const Icon(Icons.location_on_outlined, size: 16, color: Colors.grey),
                             const SizedBox(width: 4),
-                            Text(event["college"], style: const TextStyle(color: Colors.grey, fontSize: 14)),
+                            Text(event["location"], style: const TextStyle(color: Colors.grey, fontSize: 14)),
                             const Spacer(),
                             const Icon(Icons.calendar_today, size: 14, color: Color(0xFF1D61E7)),
                             const SizedBox(width: 4),

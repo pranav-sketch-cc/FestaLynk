@@ -1,16 +1,19 @@
 import 'package:FestaLynk/about_us.dart';
 import 'package:FestaLynk/all_events.dart';
+import 'package:FestaLynk/christ_university.dart';
 import 'package:FestaLynk/college_list.dart';
 import 'package:FestaLynk/create.dart';
 import 'package:FestaLynk/culturals.dart';
 import 'package:FestaLynk/event_details.dart';
 import 'package:FestaLynk/explore.dart';
 import 'package:FestaLynk/hackathons.dart';
+import 'package:FestaLynk/new_prince.dart';
 import 'package:FestaLynk/notifications.dart';
 import 'package:FestaLynk/profile.dart';
 import 'package:FestaLynk/saved_events.dart';
 import 'package:FestaLynk/seminars.dart';
 import 'package:FestaLynk/subscription.dart';
+import 'package:FestaLynk/vit_university.dart';
 import 'package:FestaLynk/workshops.dart';
 import 'package:flutter/material.dart';
 import 'package:FestaLynk/login.dart';
@@ -89,7 +92,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: no_leading_underscores_for_local_identifiers
     final List<Widget> _pages = [
       _buildHomeContent(),
       const CreatePage(),
@@ -424,9 +426,15 @@ class _HomePageState extends State<HomePage> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  collegeCard("Christ University", "Bangalore", "https://www.iesonline.co.in/colleges-image/christ-university.jpg"),
-                  collegeCard("VIT University", "Vellore", "https://images.shiksha.com/mediadata/images/articles/1656187006phpmZp2II.jpeg"),
-                  collegeCard("New Prince", "Chennai", "https://images.shiksha.com/mediadata/images/articles/1765773848phpMI1Jqr.jpeg"),
+                  collegeCard("Christ University", "Bangalore", "https://www.iesonline.co.in/colleges-image/christ-university.jpg", () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ChristUniversityPage()));
+                  }),
+                  collegeCard("VIT University", "Vellore", "https://images.shiksha.com/mediadata/images/articles/1656187006phpmZp2II.jpeg", () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const VitUniversityPage()));
+                  }),
+                  collegeCard("New Prince", "Chennai", "https://images.shiksha.com/mediadata/images/articles/1765773848phpMI1Jqr.jpeg", () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const NewPrincePage()));
+                  }),
                 ],
               ),
             ),
@@ -581,14 +589,9 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget collegeCard(String name, String place, String image) {
+  Widget collegeCard(String name, String place, String image, VoidCallback onTap) {
     return GestureDetector(
-      onTap: () {
-       Navigator.push(
-           context,
-           MaterialPageRoute(builder: (context) => const CollegeListPage())
-       );
-       },
+      onTap: onTap,
       child: Container(
         width: 200,
         margin: const EdgeInsets.all(10),
