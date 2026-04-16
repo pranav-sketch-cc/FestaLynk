@@ -1,4 +1,5 @@
 import 'package:FestaLynk/about_us.dart';
+import 'package:FestaLynk/college_list.dart';
 import 'package:FestaLynk/create.dart';
 import 'package:FestaLynk/event_details.dart';
 import 'package:FestaLynk/explore.dart';
@@ -222,7 +223,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          sectionTitle("Upcoming Events"),
+          sectionTitle("Upcoming Events", onPressed: () {}),
           SizedBox(
             height: 300,
             child: ListView(
@@ -276,7 +277,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          sectionTitle("Browse Categories"),
+          sectionTitle("Browse Categories", onPressed: () {}),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
@@ -288,7 +289,11 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          sectionTitle("Popular Colleges"),
+          sectionTitle("Popular Colleges", onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CollegeListPage()));
+          }),
           SizedBox(
             height: 220,
             child: ListView(
@@ -305,7 +310,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget sectionTitle(String title) {
+  Widget sectionTitle(String title, {VoidCallback? onPressed}) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       child: Row(
@@ -313,7 +318,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           Text(title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
           TextButton(
-            onPressed: () {},
+            onPressed: onPressed,
             child: const Text(
               "View All",
               style: TextStyle(color: Color(0xFF1D61E7)),
