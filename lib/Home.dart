@@ -2,12 +2,16 @@ import 'package:FestaLynk/about_us.dart';
 import 'package:FestaLynk/all_events.dart';
 import 'package:FestaLynk/college_list.dart';
 import 'package:FestaLynk/create.dart';
+import 'package:FestaLynk/culturals.dart';
 import 'package:FestaLynk/event_details.dart';
 import 'package:FestaLynk/explore.dart';
+import 'package:FestaLynk/hackathons.dart';
 import 'package:FestaLynk/notifications.dart';
 import 'package:FestaLynk/profile.dart';
 import 'package:FestaLynk/saved_events.dart';
+import 'package:FestaLynk/seminars.dart';
 import 'package:FestaLynk/subscription.dart';
+import 'package:FestaLynk/workshops.dart';
 import 'package:flutter/material.dart';
 import 'package:FestaLynk/login.dart';
 
@@ -85,6 +89,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: no_leading_underscores_for_local_identifiers
     final List<Widget> _pages = [
       _buildHomeContent(),
       const CreatePage(),
@@ -336,10 +341,7 @@ class _HomePageState extends State<HomePage> {
               ),
           ] else ...[
             sectionTitle("Upcoming Events", onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const AllEventsPage()),
-              );
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const AllEventsPage()));
             }),
             SizedBox(
               height: 300,
@@ -399,18 +401,23 @@ class _HomePageState extends State<HomePage> {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  categoryCard("images/vector1.png", "Workshops"),
-                  categoryCard("images/vector2.png", "Seminars"),
-                  categoryCard("images/vector3.png", "Cultural"),
-                  categoryCard("images/vector4.png", "Hackathons"),
+                  categoryCard("images/vector1.png", "Workshops", () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const WorkshopsPage()));
+                  }),
+                  categoryCard("images/vector2.png", "Seminars", () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const SeminarsPage()));
+                  }),
+                  categoryCard("images/vector3.png", "Cultural", () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const CulturalsPage()));
+                  }),
+                  categoryCard("images/vector4.png", "Hackathons", () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const HackathonsPage()));
+                  }),
                 ],
               ),
             ),
             sectionTitle("Popular Colleges", onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const CollegeListPage()),
-              );
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const CollegeListPage()));
             }),
             SizedBox(
               height: 220,
@@ -553,9 +560,9 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget categoryCard(String image, String name) {
+  Widget categoryCard(String image, String name, VoidCallback onTap) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         margin: const EdgeInsets.all(8),
         padding: const EdgeInsets.all(20),
