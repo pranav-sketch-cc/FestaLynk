@@ -1,3 +1,4 @@
+import 'package:FestaLynk/registration_link.dart';
 import 'package:flutter/material.dart';
 
 class EventDetailsPage extends StatelessWidget {
@@ -103,7 +104,11 @@ class EventDetailsPage extends StatelessWidget {
                     width: double.infinity,
                     height: 55,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => RegistrationLinkPage(registrationUrl: registrationUrl)));
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF1D61E7),
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

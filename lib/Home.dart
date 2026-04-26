@@ -7,6 +7,7 @@ import 'package:FestaLynk/culturals.dart';
 import 'package:FestaLynk/event_details.dart';
 import 'package:FestaLynk/explore.dart';
 import 'package:FestaLynk/hackathons.dart';
+import 'package:FestaLynk/iit_madras.dart';
 import 'package:FestaLynk/new_prince.dart';
 import 'package:FestaLynk/notifications.dart';
 import 'package:FestaLynk/profile.dart';
@@ -426,13 +427,13 @@ class _HomePageState extends State<HomePage> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  collegeCard("Christ University", "Bangalore", "https://www.iesonline.co.in/colleges-image/christ-university.jpg", () {
+                  collegeCard("Christ University", "Bangalore", "images/img_2.png", () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const ChristUniversityPage()));
                   }),
-                  collegeCard("VIT University", "Vellore", "https://images.shiksha.com/mediadata/images/articles/1656187006phpmZp2II.jpeg", () {
+                  collegeCard("VIT University", "Vellore", "images/img_3.png", () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const VitUniversityPage()));
                   }),
-                  collegeCard("New Prince", "Chennai", "https://images.shiksha.com/mediadata/images/articles/1765773848phpMI1Jqr.jpeg", () {
+                  collegeCard("New Prince", "Chennai", "images/img_4.png", () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const NewPrincePage()));
                   }),
                 ],
@@ -605,7 +606,7 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.network(image, height: 100, width: double.infinity, fit: BoxFit.cover),
+                child: Image.asset(image, height: 100, width: double.infinity, fit: BoxFit.cover),
               ),
             ),
             Padding(

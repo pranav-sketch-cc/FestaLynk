@@ -1,3 +1,4 @@
+import 'package:FestaLynk/all_events.dart';
 import 'package:FestaLynk/event_details.dart';
 import 'package:flutter/material.dart';
 
@@ -165,7 +166,9 @@ class _ExplorePageState extends State<ExplorePage> {
             ),
 
             if (_isSearching) ...[
-              _buildSectionHeader("Search Results"),
+              _buildSectionHeader("Search Results", onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const AllEventsPage()));
+              }),
               ListView.builder(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
@@ -193,7 +196,9 @@ class _ExplorePageState extends State<ExplorePage> {
                   child: Center(child: Text("No events found matching your search.")),
                 ),
             ] else ...[
-              _buildSectionHeader("Recommended for you"),
+              _buildSectionHeader("Recommended for you", onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const AllEventsPage()));
+              }),
               SizedBox(
                 height: 260,
                 child: ListView(
@@ -230,7 +235,9 @@ class _ExplorePageState extends State<ExplorePage> {
                 ),
               ),
 
-              _buildSectionHeader("Trending Now"),
+              _buildSectionHeader("Trending Now", onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const AllEventsPage()));
+              }),
               SizedBox(
                 height: 180,
                 child: ListView(
@@ -267,7 +274,9 @@ class _ExplorePageState extends State<ExplorePage> {
                 ),
               ),
 
-              _buildSectionHeader("Events near you"),
+              _buildSectionHeader("Events near you", onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const AllEventsPage()));
+              }),
               _buildNearMeItem(
                 context,
                 "Workshop on AI",
@@ -303,7 +312,7 @@ class _ExplorePageState extends State<ExplorePage> {
     );
   }
 
-  Widget _buildSectionHeader(String title) {
+  Widget _buildSectionHeader(String title, {VoidCallback? onPressed}) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 12, 4, 0),
       child: Row(
@@ -314,7 +323,7 @@ class _ExplorePageState extends State<ExplorePage> {
             style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: onPressed,
             child: const Text(
               "See All",
               style: TextStyle(color: Color(0xFF1D61E7), fontWeight: FontWeight.w600),

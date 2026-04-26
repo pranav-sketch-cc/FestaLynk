@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "24137046560",
+    "project_id": "emailauth-bde8a",
+    "storage_bucket": "emailauth-bde8a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24137046560:android:cc1088b31db984830afa45",
+        "android_client_info": {
+          "package_name": "com.example.smp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD06R7ytiRZ189Q7JWA56kKCd3x6-Qt1WU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

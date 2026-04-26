@@ -1,3 +1,6 @@
+import 'package:FestaLynk/anna_university.dart';
+import 'package:FestaLynk/iit_madras.dart';
+import 'package:FestaLynk/srm_university.dart';
 import 'package:flutter/material.dart';
 
 class CollegeListPage extends StatelessWidget {
@@ -61,7 +64,27 @@ class CollegeListPage extends StatelessWidget {
         itemCount: colleges.length,
         itemBuilder: (context, index) {
           final college = colleges[index];
-          return _buildCollegeCard(context, college["name"]!, college["place"]!, college["image"]!);
+          return GestureDetector(
+            onTap: () {
+              if (college["name"] == "Christ University") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const IITMadrasPage()),
+                );
+              } else if (college["name"] == "VIT University") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AnnaUniversityPage()),
+                );
+              } else if (college["name"] == "New Prince") {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SRMUniversityPage()),
+                );
+              }
+            },
+            child: _buildCollegeCard(context, college["name"]!, college["place"]!, college["image"]!),
+          );
         },
       ),
     );

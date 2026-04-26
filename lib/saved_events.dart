@@ -1,3 +1,4 @@
+import 'package:FestaLynk/event_details.dart';
 import 'package:flutter/material.dart';
 
 class SavedEventsPage extends StatelessWidget {
@@ -21,7 +22,7 @@ class SavedEventsPage extends StatelessWidget {
       ),
       body: ListView.separated(
         padding: const EdgeInsets.all(16),
-        itemCount: 3, // Example count
+        itemCount: 3,
         separatorBuilder: (context, index) => const SizedBox(height: 16),
         itemBuilder: (context, index) {
           return _buildSavedEventCard(context, index);
@@ -31,24 +32,42 @@ class SavedEventsPage extends StatelessWidget {
   }
 
   Widget _buildSavedEventCard(BuildContext context, int index) {
-    final List<Map<String, String>> savedEvents = [
+    final List<Map<String, dynamic>> savedEvents = [
       {
         "title": "Global Tech Expo 2024",
         "location": "Chennai Trade Centre",
         "image": "images/image1.png",
         "date": "28 APR",
+        "college": "IIT Madras",
+        "description": "Global Tech Expo showcases latest innovations in Robotics, AI and Sustainable energy.",
+        "mode": "Offline",
+        "price": "₹500",
+        "type": "Tech Expo",
+        "deadline": "20 APR",
       },
       {
         "title": "Music Festival '24",
         "location": "Island Grounds, Chennai",
         "image": "images/image2.png",
         "date": "15 MAY",
+        "college": "Anna University",
+        "description": "A night of rhythm and soul featuring top independent artists.",
+        "mode": "Offline",
+        "price": "₹300",
+        "type": "Cultural",
+        "deadline": "10 MAY",
       },
       {
         "title": "Startup Pitch",
         "location": "IIT Madras",
         "image": "images/image3.png",
         "date": "05 JUN",
+        "college": "IIT Madras",
+        "description": "Watch emerging startups battle it out for seed funding.",
+        "mode": "Offline",
+        "price": "FREE",
+        "type": "Hackathon",
+        "deadline": "01 JUN",
       },
     ];
 
@@ -80,9 +99,7 @@ class SavedEventsPage extends StatelessWidget {
                 top: 10,
                 right: 10,
                 child: GestureDetector(
-                  onTap: () {
-                    // Action to remove from saved
-                  },
+                  onTap: () {},
                   child: Container(
                     padding: const EdgeInsets.all(6),
                     decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
@@ -130,7 +147,27 @@ class SavedEventsPage extends StatelessWidget {
                 SizedBox(
                   width: double.infinity,
                   child: OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => EventDetailsPage(
+                            title: event["title"],
+                            image: event["image"],
+                            startDate: event["date"],
+                            endDate: event["date"],
+                            description: event["description"],
+                            mode: event["mode"],
+                            collegeName: event["college"],
+                            location: event["location"],
+                            registrationUrl: "https://festalynk.com/register",
+                            registrationAmount: event["price"],
+                            eventType: event["type"],
+                            registrationDeadline: event["deadline"],
+                          ),
+                        ),
+                      );
+                    },
                     style: OutlinedButton.styleFrom(
                       side: const BorderSide(color: Color(0xFF1D61E7)),
                       shape: RoundedRectangleBorder(
